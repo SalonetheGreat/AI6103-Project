@@ -46,7 +46,7 @@ for subdir, dirs, files in os.walk(source_path):
             plt.title(f'{folder_name} Training and Validation Loss')
             plt.legend(loc='upper right')
             plt.grid(True)
-            loss_filename = os.path.join(graphs_path, f'{folder_name}_loss_graph.png')
+            loss_filename = os.path.join(graphs_path, f'{folder_name}_loss.png')
             plt.savefig(loss_filename)
             plt.close()
 
@@ -61,7 +61,7 @@ for subdir, dirs, files in os.walk(source_path):
             plt.title(f'{folder_name} Training and Validation Accuracy')
             plt.legend(loc='lower right')
             plt.grid(True)
-            accuracy_filename = os.path.join(graphs_path, f'{folder_name}_accuracy_graph.png')
+            accuracy_filename = os.path.join(graphs_path, f'{folder_name}_accuracy.png')
             plt.savefig(accuracy_filename)
             plt.close()
 
@@ -81,6 +81,6 @@ for subdir, dirs, files in os.walk(source_path):
             ax2.tick_params(axis='y', labelcolor='green')
             plt.title(f'{folder_name} Combined Loss and Accuracy')
             fig.legend(loc='upper right', bbox_to_anchor=(1, 1), bbox_transform=ax1.transAxes)
-            combined_filename = os.path.join(graphs_path, f'{folder_name}_combined_loss_accuracy_graph.png')
+            combined_filename = os.path.join(graphs_path, f'{folder_name}_combined_loss_accuracy.png')
             plt.savefig(combined_filename)
             plt.close()
