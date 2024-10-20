@@ -37,7 +37,7 @@ for subdir, dirs, files in os.walk(source_path):
             # Load the CSV data
             data = pd.read_csv(filepath)
 
-            # Create and save the Loss graph
+            # Save the Loss graph in the output subdirectory
             plt.figure(figsize=(10, 6))
             plt.plot(data['Epoch'], data['Train Loss'], label='Train Loss', color='blue', marker='o')
             plt.plot(data['Epoch'], data['Valid Loss'], label='Valid Loss', color='red', marker='o')
@@ -46,11 +46,11 @@ for subdir, dirs, files in os.walk(source_path):
             plt.title(f'{folder_name} Training and Validation Loss')
             plt.legend(loc='upper right')
             plt.grid(True)
-            loss_filename = os.path.join(graphs_path, f'{folder_name}_loss.png')
+            loss_filename = os.path.join(subdir, f'{folder_name}_loss.png')
             plt.savefig(loss_filename)
             plt.close()
 
-            # Create and save the Accuracy graph
+            # Save the Accuracy graph in the output subdirectory
             plt.figure(figsize=(10, 6))
             plt.plot(data['Epoch'], data['Train Accuracy'], label='Train Accuracy', color='green', linestyle='--',
                      marker='s')
@@ -61,11 +61,11 @@ for subdir, dirs, files in os.walk(source_path):
             plt.title(f'{folder_name} Training and Validation Accuracy')
             plt.legend(loc='lower right')
             plt.grid(True)
-            accuracy_filename = os.path.join(graphs_path, f'{folder_name}_accuracy.png')
+            accuracy_filename = os.path.join(subdir, f'{folder_name}_accuracy.png')
             plt.savefig(accuracy_filename)
             plt.close()
 
-            # Create and save the combined Loss and Accuracy graph
+            # Create and save the combined Loss and Accuracy graph in the graphs directory
             fig, ax1 = plt.subplots(figsize=(10, 6))
             ax1.plot(data['Epoch'], data['Train Loss'], label='Train Loss', color='blue', marker='o')
             ax1.plot(data['Epoch'], data['Valid Loss'], label='Valid Loss', color='red', marker='o')
